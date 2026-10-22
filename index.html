@@ -1,0 +1,640 @@
+```html
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LNB STUDIO | عالم تجارب روبلوكس الاحترافية</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Cairo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#0a0f1d',
+                            card: '#111827',
+                            cyan: '#00f0ff',
+                            blue: '#0088ff',
+                            glow: '#00d2ff',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Cairo', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'neon-cyan': '0 0 15px rgba(0, 240, 255, 0.4), 0 0 30px rgba(0, 240, 255, 0.2)',
+                        'neon-blue': '0 0 15px rgba(0, 136, 255, 0.4), 0 0 30px rgba(0, 136, 255, 0.2)',
+                        'glow-lg': '0 0 25px rgba(0, 240, 255, 0.6)',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* خلفية شبكية سايبر ستايل */
+        .cyber-grid {
+            background-size: 40px 40px;
+            background-image: 
+                linear-gradient(to right, rgba(0, 240, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(0, 240, 255, 0.05) 1px, transparent 1px);
+        }
+        
+        /* تأثيرات الإضاءة للحدود والكرت */
+        .glass-card {
+            background: rgba(17, 24, 39, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(0, 240, 255, 0.15);
+            transition: all 0.3s ease;
+        }
+        .glass-card:hover {
+            border-color: rgba(0, 240, 255, 0.5);
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.25);
+            transform: translateY(-3px);
+        }
+
+        /* نص متدرج مضيء */
+        .text-glow {
+            text-shadow: 0 0 12px rgba(0, 240, 255, 0.6);
+        }
+
+        /* تخصيص شريط التمرير */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0a0f1d;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #0088ff;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00f0ff;
+        }
+    </style>
+</head>
+<body class="bg-brand-dark text-gray-100 font-sans antialiased selection:bg-brand-cyan selection:text-black min-h-screen flex flex-col relative overflow-x-hidden">
+
+    <!-- خلفية جزيئات وشبكة سايبر -->
+    <div class="fixed inset-0 cyber-grid pointer-events-none z-0"></div>
+    <div class="fixed -top-40 -left-40 w-96 h-96 bg-brand-cyan/10 rounded-full blur-3xl pointer-events-none z-0"></div>
+    <div class="fixed top-1/2 -right-40 w-96 h-96 bg-brand-blue/10 rounded-full blur-3xl pointer-events-none z-0"></div>
+
+    <!-- Header / Nav -->
+    <header class="sticky top-0 z-50 glass-card border-b border-brand-cyan/20 bg-brand-dark/80 backdrop-blur-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-blue to-brand-cyan flex items-center justify-center shadow-neon-cyan text-brand-dark font-black text-xl">
+                        LNB
+                    </div>
+                    <span class="text-2xl font-black tracking-wider bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-400 bg-clip-text text-transparent">
+                        LNB STUDIO
+                    </span>
+                </div>
+
+                <!-- Desktop Nav Navigation Links -->
+                <nav class="hidden md:flex items-center space-x-8 space-x-reverse text-sm font-semibold">
+                    <a href="#home" class="text-brand-cyan transition hover:text-white flex items-center gap-1.5"><i class="fa-solid fa-house text-xs"></i> الرئيسية</a>
+                    <a href="#about" class="text-gray-300 transition hover:text-brand-cyan flex items-center gap-1.5"><i class="fa-solid fa-circle-info text-xs"></i> من نحن</a>
+                    <a href="#news" class="text-gray-300 transition hover:text-brand-cyan flex items-center gap-1.5"><i class="fa-solid fa-newspaper text-xs"></i> الأخبار والتحديثات</a>
+                    <a href="#projects" class="text-gray-300 transition hover:text-brand-cyan flex items-center gap-1.5"><i class="fa-solid fa-gamepad text-xs"></i> مشاريعنا</a>
+                    <a href="#features" class="text-gray-300 transition hover:text-brand-cyan flex items-center gap-1.5"><i class="fa-solid fa-star text-xs"></i> المميزات</a>
+                    <a href="#community" class="text-gray-300 transition hover:text-brand-cyan flex items-center gap-1.5"><i class="fa-brands fa-discord text-xs"></i> المجتمع</a>
+                </nav>
+
+                <!-- Discord CTA Button -->
+                <div class="hidden md:flex items-center gap-4">
+                    <a href="https://discord.gg" target="_blank" class="relative inline-flex items-center justify-center px-6 py-2.5 text-sm font-bold text-black transition-all duration-200 bg-brand-cyan rounded-xl shadow-neon-cyan hover:bg-white hover:shadow-glow-lg active:scale-95">
+                        <i class="fa-brands fa-discord text-lg me-2"></i>
+                        سيرفر الديسكورد
+                    </a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-300 hover:text-brand-cyan focus:outline-none p-2">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Nav Menu -->
+        <div id="mobile-menu" class="hidden md:hidden glass-card border-t border-brand-cyan/20 px-4 pt-2 pb-6 space-y-3">
+            <a href="#home" class="block px-3 py-2 rounded-lg text-brand-cyan font-bold bg-brand-cyan/10"><i class="fa-solid fa-house me-2"></i> الرئيسية</a>
+            <a href="#about" class="block px-3 py-2 rounded-lg text-gray-300 hover:text-brand-cyan hover:bg-brand-cyan/10"><i class="fa-solid fa-circle-info me-2"></i> من نحن</a>
+            <a href="#news" class="block px-3 py-2 rounded-lg text-gray-300 hover:text-brand-cyan hover:bg-brand-cyan/10"><i class="fa-solid fa-newspaper me-2"></i> الأخبار والتحديثات</a>
+            <a href="#projects" class="block px-3 py-2 rounded-lg text-gray-300 hover:text-brand-cyan hover:bg-brand-cyan/10"><i class="fa-solid fa-gamepad me-2"></i> مشاريعنا</a>
+            <a href="#features" class="block px-3 py-2 rounded-lg text-gray-300 hover:text-brand-cyan hover:bg-brand-cyan/10"><i class="fa-solid fa-star me-2"></i> المميزات</a>
+            <a href="#community" class="block px-3 py-2 rounded-lg text-gray-300 hover:text-brand-cyan hover:bg-brand-cyan/10"><i class="fa-brands fa-discord me-2"></i> مجتمعنا</a>
+            <a href="https://discord.gg" target="_blank" class="block w-full text-center py-2.5 mt-2 bg-brand-cyan text-black font-bold rounded-xl shadow-neon-cyan">
+                <i class="fa-brands fa-discord me-2"></i> الانضمام للديسكورد
+            </a>
+        </div>
+    </header>
+
+    <main class="flex-grow z-10">
+
+        <!-- Hero Section -->
+        <section id="home" class="relative py-24 md:py-32 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+                
+                <!-- Badge -->
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card border-brand-cyan/40 text-brand-cyan text-xs sm:text-sm font-semibold mb-8 animate-pulse">
+                    <span class="w-2 h-2 rounded-full bg-brand-cyan shadow-neon-cyan"></span>
+                    استوديو تطوير مابات روبلوكس الاحترافي
+                </div>
+
+                <!-- Main Heading -->
+                <h1 class="text-4xl sm:text-6xl md:text-7xl font-black tracking-tight leading-tight mb-6">
+                    نصنع الجيل القادم من <br>
+                    <span class="bg-gradient-to-r from-brand-cyan via-blue-400 to-indigo-500 bg-clip-text text-transparent text-glow">
+                        تجارب روبلوكس الأسطورية
+                    </span>
+                </h1>
+
+                <!-- Subtitle -->
+                <p class="max-w-2xl mx-auto text-lg sm:text-xl text-gray-400 font-normal leading-relaxed mb-10">
+                    مرحباً بكم في <strong class="text-white">LNB STUDIO</strong>! نحن فريق متخصص في بناء المابات البرمجية، الأساليب المبتكرة، والتصاميم المذهلة بدقة عالية بأعلى معايير جودة Luau Optimization.
+                </p>
+
+                <!-- CTA Buttons -->
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
+                    <a href="#projects" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-gradient-to-r from-brand-cyan to-brand-blue text-black font-extrabold text-lg shadow-neon-cyan hover:scale-105 transition duration-300">
+                        <i class="fa-solid fa-rocket me-2"></i> استكشف ماباتنا
+                    </a>
+                    <a href="https://discord.gg" target="_blank" class="w-full sm:w-auto px-8 py-4 rounded-xl glass-card text-white font-bold text-lg hover:border-brand-cyan transition duration-300 flex items-center justify-center gap-2">
+                        <i class="fa-brands fa-discord text-xl text-brand-cyan"></i> مجتمع الديسكورد
+                    </a>
+                    <a href="https://github.com" target="_blank" class="w-full sm:w-auto px-8 py-4 rounded-xl glass-card text-gray-300 hover:text-white hover:border-white transition duration-300 flex items-center justify-center gap-2">
+                        <i class="fa-brands fa-github text-xl"></i> GitHub Repo
+                    </a>
+                </div>
+
+                <!-- Quick Stats -->
+                <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+                    <div class="glass-card p-4 rounded-2xl">
+                        <div class="text-3xl font-extrabold text-brand-cyan">100K+</div>
+                        <div class="text-xs text-gray-400 mt-1">زيارات المابات</div>
+                    </div>
+                    <div class="glass-card p-4 rounded-2xl">
+                        <div class="text-3xl font-extrabold text-brand-cyan">5+</div>
+                        <div class="text-xs text-gray-400 mt-1">مشاريع مكتملة</div>
+                    </div>
+                    <div class="glass-card p-4 rounded-2xl">
+                        <div class="text-3xl font-extrabold text-brand-cyan">10K+</div>
+                        <div class="text-xs text-gray-400 mt-1">أعضاء المجتمع</div>
+                    </div>
+                    <div class="glass-card p-4 rounded-2xl">
+                        <div class="text-3xl font-extrabold text-brand-cyan">99.9%</div>
+                        <div class="text-xs text-gray-400 mt-1">سلاسة وأداء (FPS)</div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="about" class="py-20 relative border-t border-brand-cyan/10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <div class="text-brand-cyan font-bold text-sm mb-2 flex items-center gap-2">
+                            <i class="fa-solid fa-shield-halved"></i> عن الاستوديو
+                        </div>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold mb-6">
+                            من هو <span class="text-brand-cyan">LNB STUDIO</span>؟
+                        </h2>
+                        <p class="text-gray-300 leading-relaxed mb-4">
+                            تأسس **LNB STUDIO** بهدف تقديم تجارب روبلوكس فريدة من نوعها ومختلفة عن المألوف. نركز على الدقة العالية في التفاصيل، البرمجة الخالية من الأخطاء، والأنظمة المخصصة بالكامل.
+                        </p>
+                        <p class="text-gray-400 leading-relaxed mb-6">
+                            نمتلك فريقاً متكاملاً من المبرمجين بلغة Luau، مصممي الخرائط (Map Builders)، ومصممي الواجهات (UI/UX) وواجهات المستخدم الحركية، لضمان تجربة لعب لا تُنسى.
+                        </p>
+
+                        <div class="space-y-3">
+                            <div class="flex items-center gap-3 text-gray-200">
+                                <i class="fa-solid fa-circle-check text-brand-cyan"></i>
+                                <span>تطوير أنظمة حصرية وخفيفة على الأجهزة</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-gray-200">
+                                <i class="fa-solid fa-circle-check text-brand-cyan"></i>
+                                <span>دعم وتحديثات مستمرة لجميع ماباتنا</span>
+                            </div>
+                            <div class="flex items-center gap-3 text-gray-200">
+                                <i class="fa-solid fa-circle-check text-brand-cyan"></i>
+                                <span>تواصل مباشر وسريع مع اللاعبين في الديسكورد</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Display Card Graphic -->
+                    <div class="relative">
+                        <div class="glass-card p-8 rounded-3xl relative z-10 border-brand-cyan/30">
+                            <div class="flex items-center justify-between mb-6 border-b border-gray-800 pb-4">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                    <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                    <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                                </div>
+                                <span class="text-xs font-mono text-gray-400">lnb_studio_core.luau</span>
+                            </div>
+                            <pre class="font-mono text-xs sm:text-sm text-cyan-300 overflow-x-auto leading-relaxed">
+<span class="text-purple-400">local</span> LNBStudio = {}
+LNBStudio.Name = <span class="text-green-300">"LNB STUDIO"</span>
+LNBStudio.Quality = <span class="text-green-300">"NEXT_LEVEL"</span>
+
+<span class="text-purple-400">function</span> LNBStudio:<span class="text-blue-400">CreateExperience</span>()
+    <span class="text-purple-400">return</span> {
+        SmoothPerformance = <span class="text-yellow-300">true</span>,
+        CustomUI = <span class="text-yellow-300">true</span>,
+        EpicGameplay = <span class="text-yellow-300">true</span>
+    }
+<span class="text-purple-400">end</span>
+
+<span class="text-gray-500">-- Launching Roblox World...</span>
+LNBStudio:<span class="text-blue-400">CreateExperience</span>()
+                            </pre>
+                        </div>
+                        <div class="absolute -bottom-6 -right-6 w-full h-full bg-brand-blue/20 rounded-3xl blur-xl -z-10"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- News & Announcements Section -->
+        <section id="news" class="py-20 relative bg-black/30 border-t border-brand-cyan/10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <!-- Section Header -->
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+                    <div>
+                        <div class="text-brand-cyan font-bold text-sm mb-2 flex items-center gap-2">
+                            <i class="fa-solid fa-bullhorn"></i> مستجدات الاستوديو
+                        </div>
+                        <h2 class="text-3xl sm:text-4xl font-extrabold">آخر الأخبار والتحديثات</h2>
+                    </div>
+
+                    <!-- Filters & Search -->
+                    <div class="mt-6 md:mt-0 flex flex-wrap items-center gap-3">
+                        <div class="relative">
+                            <input type="text" id="news-search" placeholder="بحث عن خبر..." class="bg-brand-card border border-brand-cyan/20 rounded-xl px-4 py-2 pl-10 text-sm focus:outline-none focus:border-brand-cyan text-white w-48 sm:w-64">
+                            <i class="fa-solid fa-magnifying-glass absolute left-3 top-2.5 text-gray-400 text-sm"></i>
+                        </div>
+                        <div class="flex gap-2">
+                            <button onclick="filterNews('all')" class="news-filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-brand-cyan text-black shadow-neon-cyan" data-category="all">الكل</button>
+                            <button onclick="filterNews('update')" class="news-filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-brand-card border border-gray-700 text-gray-300 hover:border-brand-cyan" data-category="update">تحديثات</button>
+                            <button onclick="filterNews('event')" class="news-filter-btn px-4 py-2 rounded-xl text-xs font-bold bg-brand-card border border-gray-700 text-gray-300 hover:border-brand-cyan" data-category="event">فعاليات</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- News Grid -->
+                <div id="news-container" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    
+                    <!-- News Item 1 -->
+                    <div class="news-card glass-card rounded-2xl overflow-hidden flex flex-col" data-category="update">
+                        <div class="p-6 flex-grow">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="px-3 py-1 rounded-full text-xs font-bold bg-brand-cyan/20 text-brand-cyan border border-brand-cyan/40">تحديث v2.4</span>
+                                <span class="text-xs text-gray-400"><i class="fa-regular fa-clock me-1"></i> 2026-10-20</span>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3 text-white">إطلاق التحديث الجديد لماب حرب العصابات</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                                تم إضافة أسلحة جديدة بالكامل، وتطوير الواجهة الرئيسية مع تحسين سرعة واستجابة اللعبة بنسبة 40%.
+                            </p>
+                        </div>
+                        <div class="px-6 pb-6 pt-0 border-t border-gray-800/50 mt-auto flex justify-between items-center">
+                            <span class="text-xs text-brand-cyan font-bold"><i class="fa-solid fa-tag me-1"></i> LNB Map</span>
+                            <button onclick="openNewsModal('إطلاق التحديث الجديد لماب حرب العصابات', 'تم إضافة أسلحة جديدة بالكامل، وتطوير الواجهة الرئيسية مع تحسين سرعة واستجابة اللعبة بنسبة 40%. ميزات التحديث: نظام رتب جديد، صيانة الأخطاء البرمجية، متجر مطور.')" class="text-xs text-gray-300 hover:text-brand-cyan font-bold">قراءة المزيد <i class="fa-solid fa-arrow-left ms-1"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- News Item 2 -->
+                    <div class="news-card glass-card rounded-2xl overflow-hidden flex flex-col" data-category="event">
+                        <div class="p-6 flex-grow">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="px-3 py-1 rounded-full text-xs font-bold bg-purple-500/20 text-purple-400 border border-purple-500/40">فعالية رسمية</span>
+                                <span class="text-xs text-gray-400"><i class="fa-regular fa-clock me-1"></i> 2026-10-15</span>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3 text-white">بطولة LNB STUDIO المفتوحة</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                                انضم إلينا في بطولة الديسكورد الكبرى مع جوائز روبوكس قيمة للرتب الأولى! والتسجيل مفتوح للجميع.
+                            </p>
+                        </div>
+                        <div class="px-6 pb-6 pt-0 border-t border-gray-800/50 mt-auto flex justify-between items-center">
+                            <span class="text-xs text-purple-400 font-bold"><i class="fa-solid fa-trophy me-1"></i> مسابقات</span>
+                            <button onclick="openNewsModal('بطولة LNB STUDIO المفتوحة', 'انضم إلينا في بطولة الديسكورد الكبرى مع جوائز روبوكس قيمة للرتب الأولى! والتسجيل مفتوح للجميع عبر السيرفر الرسمي.')" class="text-xs text-gray-300 hover:text-brand-cyan font-bold">قراءة المزيد <i class="fa-solid fa-arrow-left ms-1"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- News Item 3 -->
+                    <div class="news-card glass-card rounded-2xl overflow-hidden flex flex-col" data-category="update">
+                        <div class="p-6 flex-grow">
+                            <div class="flex items-center justify-between mb-4">
+                                <span class="px-3 py-1 rounded-full text-xs font-bold bg-blue-500/20 text-blue-400 border border-blue-500/40">إعلان هامة</span>
+                                <span class="text-xs text-gray-400"><i class="fa-regular fa-clock me-1"></i> 2026-10-01</span>
+                            </div>
+                            <h3 class="text-xl font-bold mb-3 text-white">افتتاح المقر الجديد وسيرفر الديسكورد</h3>
+                            <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                                قمنا بتحديث هيكلية سيرفر الديسكورد بالكامل مع إضافة بوتات حصرية وإمكانية متابعة التحديثات أولاً بأول.
+                            </p>
+                        </div>
+                        <div class="px-6 pb-6 pt-0 border-t border-gray-800/50 mt-auto flex justify-between items-center">
+                            <span class="text-xs text-blue-400 font-bold"><i class="fa-solid fa-users me-1"></i> المجتمع</span>
+                            <button onclick="openNewsModal('افتتاح المقر الجديد وسيرفر الديسكورد', 'قمنا بتحديث هيكلية سيرفر الديسكورد بالكامل مع إضافة بوتات حصرية وإمكانية متابعة التحديثات أولاً بأول مباشرة من المطورين.')" class="text-xs text-gray-300 hover:text-brand-cyan font-bold">قراءة المزيد <i class="fa-solid fa-arrow-left ms-1"></i></button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Showcase Section -->
+        <section id="projects" class="py-20 relative border-t border-brand-cyan/10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <div class="text-brand-cyan font-bold text-sm mb-2"><i class="fa-solid fa-gamepad"></i> أعمالنا الإبداعية</div>
+                    <h2 class="text-3xl sm:text-5xl font-black mb-4">مشاريع ومابات <span class="text-brand-cyan">LNB STUDIO</span></h2>
+                    <p class="text-gray-400">تصفح أشهر العوالم والمابات التي تم تطويرها بواسطة فريقنا</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <!-- Project Card 1 -->
+                    <div class="glass-card rounded-3xl overflow-hidden group">
+                        <div class="relative h-48 bg-gradient-to-tr from-blue-900 to-indigo-900 flex items-center justify-center overflow-hidden">
+                            <i class="fa-solid fa-city text-7xl text-brand-cyan/30 group-hover:scale-110 transition duration-500"></i>
+                            <span class="absolute top-4 right-4 bg-emerald-500 text-black text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider">متاح الآن</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold mb-2 group-hover:text-brand-cyan transition">مدينة LNB الحقيقية</h3>
+                            <p class="text-gray-400 text-sm mb-4 leading-relaxed">
+                                ماب محاكاة حياة واقعية مع أنظمة سيارات مخصصة، وظائف متعددة، ونظام اقتصاد متطور بدقة عنائية.
+                            </p>
+                            <div class="flex items-center justify-between pt-4 border-t border-gray-800">
+                                <span class="text-xs text-gray-400"><i class="fa-solid fa-user-group me-1 text-brand-cyan"></i> 1,200+ لاعب حالي</span>
+                                <a href="https://roblox.com" target="_blank" class="px-4 py-2 rounded-xl bg-brand-cyan/10 text-brand-cyan hover:bg-brand-cyan hover:text-black font-bold text-xs transition">تجربة الماب</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 2 -->
+                    <div class="glass-card rounded-3xl overflow-hidden group">
+                        <div class="relative h-48 bg-gradient-to-tr from-cyan-900 to-blue-950 flex items-center justify-center overflow-hidden">
+                            <i class="fa-solid fa-shield-cat text-7xl text-brand-cyan/30 group-hover:scale-110 transition duration-500"></i>
+                            <span class="absolute top-4 right-4 bg-amber-500 text-black text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider">تحت التطوير</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold mb-2 group-hover:text-brand-cyan transition">مغامرات السايبر</h3>
+                            <p class="text-gray-400 text-sm mb-4 leading-relaxed">
+                                ماب أكشن وقتال مستقبلي بعالم مفتوح، يحتوي على قدرات خاصة وأسلحة نيون وتحديات يومية.
+                            </p>
+                            <div class="flex items-center justify-between pt-4 border-t border-gray-800">
+                                <span class="text-xs text-gray-400"><i class="fa-solid fa-hourglass-half me-1 text-amber-400"></i> قريباً v1.0</span>
+                                <a href="https://discord.gg" target="_blank" class="px-4 py-2 rounded-xl bg-gray-800 text-gray-300 hover:text-white font-bold text-xs transition">متابعة الأخبار</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 3 -->
+                    <div class="glass-card rounded-3xl overflow-hidden group">
+                        <div class="relative h-48 bg-gradient-to-tr from-purple-900 to-blue-900 flex items-center justify-center overflow-hidden">
+                            <i class="fa-solid fa-ghost text-7xl text-brand-cyan/30 group-hover:scale-110 transition duration-500"></i>
+                            <span class="absolute top-4 right-4 bg-purple-500 text-black text-xs font-black px-3 py-1 rounded-full uppercase tracking-wider">بيتا التجريبية</span>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-2xl font-bold mb-2 group-hover:text-brand-cyan transition">هروب من المنشأة</h3>
+                            <p class="text-gray-400 text-sm mb-4 leading-relaxed">
+                                ماب رعب وألغاز متعدد اللاعبين، يتطلب التعاون للهروب من الوحوش وحل الألغاز المعقدة.
+                            </p>
+                            <div class="flex items-center justify-between pt-4 border-t border-gray-800">
+                                <span class="text-xs text-gray-400"><i class="fa-solid fa-vial me-1 text-purple-400"></i> نسخت البيتا</span>
+                                <a href="https://roblox.com" target="_blank" class="px-4 py-2 rounded-xl bg-brand-cyan/10 text-brand-cyan hover:bg-brand-cyan hover:text-black font-bold text-xs transition">دخول البيتا</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Studio Features Section -->
+        <section id="features" class="py-20 relative bg-black/30 border-t border-brand-cyan/10">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16">
+                    <div class="text-brand-cyan font-bold text-sm mb-2"><i class="fa-solid fa-bolt"></i> خيارات جودة عالية</div>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold mb-4">ما الذي يميز <span class="text-brand-cyan">LNB STUDIO</span>؟</h2>
+                </div>
+
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Feature 1 -->
+                    <div class="glass-card p-8 rounded-2xl">
+                        <div class="w-12 h-12 rounded-xl bg-brand-cyan/10 border border-brand-cyan/30 flex items-center justify-center text-brand-cyan text-xl mb-6 shadow-neon-cyan">
+                            <i class="fa-solid fa-code"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">برمجة Luau متقدمة</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            نصوص برمجية منظمة وخالية من الثغرات، مع مراعاة الأداء العالي ومكافحة الهكر والسكربتات الخارجية.
+                        </p>
+                    </div>
+
+                    <!-- Feature 2 -->
+                    <div class="glass-card p-8 rounded-2xl">
+                        <div class="w-12 h-12 rounded-xl bg-brand-cyan/10 border border-brand-cyan/30 flex items-center justify-center text-brand-cyan text-xl mb-6 shadow-neon-cyan">
+                            <i class="fa-solid fa-cubes"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">تصميم مابات بدقة ثلاثية</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            بناء خرائط تفاعلية بأسلوب حديث وتفاصيل مبهرة تتناسب مع الأجواء والأجهزة المختلفة.
+                        </p>
+                    </div>
+
+                    <!-- Feature 3 -->
+                    <div class="glass-card p-8 rounded-2xl">
+                        <div class="w-12 h-12 rounded-xl bg-brand-cyan/10 border border-brand-cyan/30 flex items-center justify-center text-brand-cyan text-xl mb-6 shadow-neon-cyan">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">واجهات مستخدم UI/UX سينمائية</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            تصميم واجهات أنيقة وعصرية سهلة الاستخدام وتدعم جميع الشاشات والجوالات بشكل متناسق.
+                        </p>
+                    </div>
+
+                    <!-- Feature 4 -->
+                    <div class="glass-card p-8 rounded-2xl">
+                        <div class="w-12 h-12 rounded-xl bg-brand-cyan/10 border border-brand-cyan/30 flex items-center justify-center text-brand-cyan text-xl mb-6 shadow-neon-cyan">
+                            <i class="fa-solid fa-gauge-high"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">تحسين الأداء (Optimization)</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            تقليل التعليق والـ Lag للحد الأقصى لضمان عمل الماب بـ FPS عالي حتى على الأجهزة الضعيفة.
+                        </p>
+                    </div>
+
+                    <!-- Feature 5 -->
+                    <div class="glass-card p-8 rounded-2xl">
+                        <div class="w-12 h-12 rounded-xl bg-brand-cyan/10 border border-brand-cyan/30 flex items-center justify-center text-brand-cyan text-xl mb-6 shadow-neon-cyan">
+                            <i class="fa-solid fa-rotate"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">تحديثات دورية وسريعة</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            نحن لا نتوقف عند الإطلاق! نقوم بإضافة محتوى جديد وفعاليات بشكل أسبوعي ومستمر.
+                        </p>
+                    </div>
+
+                    <!-- Feature 6 -->
+                    <div class="glass-card p-8 rounded-2xl">
+                        <div class="w-12 h-12 rounded-xl bg-brand-cyan/10 border border-brand-cyan/30 flex items-center justify-center text-brand-cyan text-xl mb-6 shadow-neon-cyan">
+                            <i class="fa-solid fa-comments"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">الاستماع للمجتمع</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            نأخذ أفكار واقتراحات اللاعبين بمحمل الجد ونقوم بتطبيق الأفضل منها داخل المابات.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Discord Community Banner -->
+        <section id="community" class="py-20 relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="glass-card p-8 sm:p-12 rounded-3xl relative overflow-hidden border-brand-cyan/40 text-center">
+                    <div class="absolute -right-10 -bottom-10 w-60 h-60 bg-brand-cyan/10 rounded-full blur-2xl"></div>
+                    
+                    <i class="fa-brands fa-discord text-6xl text-brand-cyan mb-6 shadow-neon-cyan inline-block p-4 rounded-2xl bg-brand-cyan/10"></i>
+                    <h2 class="text-3xl sm:text-5xl font-black mb-4">انضم إلى مجتمع LNB STUDIO</h2>
+                    <p class="text-gray-300 max-w-2xl mx-auto text-base sm:text-lg mb-8">
+                        كن أول من يعلم بالتحديثات القادمة، شارك في السحوبات والمسابقات، وتواصل مباشرة مع فريق التطوير.
+                    </p>
+                    
+                    <a href="https://discord.gg" target="_blank" class="inline-flex items-center justify-center px-10 py-4 text-lg font-black text-black transition-all duration-200 bg-brand-cyan rounded-2xl shadow-neon-cyan hover:bg-white hover:shadow-glow-lg active:scale-95">
+                        <i class="fa-brands fa-discord text-2xl me-3"></i>
+                        دخول السيرفر الآن
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Modal for News Details -->
+    <div id="news-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="glass-card max-w-lg w-full p-6 sm:p-8 rounded-3xl relative border-brand-cyan/50">
+            <button onclick="closeNewsModal()" class="absolute top-4 left-4 text-gray-400 hover:text-white text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <h3 id="modal-title" class="text-2xl font-bold text-white mb-4">عنوان الخبر</h3>
+            <p id="modal-content" class="text-gray-300 text-sm leading-relaxed mb-6">تفاصيل الخبر...</p>
+            <button onclick="closeNewsModal()" class="w-full py-3 bg-brand-cyan text-black font-bold rounded-xl shadow-neon-cyan">إغلاق</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="border-t border-brand-cyan/20 bg-brand-dark/90 py-12 relative z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+                
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-brand-blue to-brand-cyan flex items-center justify-center text-brand-dark font-black text-sm shadow-neon-cyan">
+                        LNB
+                    </div>
+                    <span class="text-xl font-black text-white">LNB STUDIO</span>
+                </div>
+
+                <p class="text-xs text-gray-500 text-center">
+                    &copy; 2026 LNB STUDIO. جميع الحقوق محفوظة. ليس منتجاً رسمياً من Roblox Corporation.
+                </p>
+
+                <!-- Social Icons -->
+                <div class="flex items-center space-x-4 space-x-reverse text-gray-400">
+                    <a href="https://discord.gg" target="_blank" class="hover:text-brand-cyan transition"><i class="fa-brands fa-discord text-xl"></i></a>
+                    <a href="https://github.com" target="_blank" class="hover:text-brand-cyan transition"><i class="fa-brands fa-github text-xl"></i></a>
+                    <a href="https://roblox.com" target="_blank" class="hover:text-brand-cyan transition"><i class="fa-solid fa-gamepad text-xl"></i></a>
+                    <a href="https://youtube.com" target="_blank" class="hover:text-brand-cyan transition"><i class="fa-brands fa-youtube text-xl"></i></a>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Mobile menu toggle
+        const mobileBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Modal Logic
+        function openNewsModal(title, content) {
+            document.getElementById('modal-title').innerText = title;
+            document.getElementById('modal-content').innerText = content;
+            document.getElementById('news-modal').classList.remove('hidden');
+        }
+
+        function closeNewsModal() {
+            document.getElementById('news-modal').classList.add('hidden');
+        }
+
+        // News Filter Logic
+        function filterNews(category) {
+            const cards = document.querySelectorAll('.news-card');
+            const buttons = document.querySelectorAll('.news-filter-btn');
+
+            buttons.forEach(btn => {
+                if (btn.getAttribute('data-category') === category) {
+                    btn.classList.add('bg-brand-cyan', 'text-black', 'shadow-neon-cyan');
+                    btn.classList.remove('bg-brand-card', 'text-gray-300', 'border');
+                } else {
+                    btn.classList.remove('bg-brand-cyan', 'text-black', 'shadow-neon-cyan');
+                    btn.classList.add('bg-brand-card', 'text-gray-300', 'border');
+                }
+            });
+
+            cards.forEach(card => {
+                if (category === 'all' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Live News Search Logic
+        const searchInput = document.getElementById('news-search');
+        searchInput.addEventListener('input', function(e) {
+            const query = e.target.value.toLowerCase();
+            const cards = document.querySelectorAll('.news-card');
+
+            cards.forEach(card => {
+                const title = card.querySelector('h3').innerText.toLowerCase();
+                const desc = card.querySelector('p').innerText.toLowerCase();
+
+                if (title.includes(query) || desc.includes(query)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+```
